@@ -7,7 +7,7 @@ const theme = createTheme({
     primary:
     {
       main: blue[300]
-    }
+    },
   }
 })
 
