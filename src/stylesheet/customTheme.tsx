@@ -1,12 +1,12 @@
 import { createTheme } from "@mui/material/styles";
-import { blue } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 
 const theme = createTheme({
   palette:
   {
     primary:
     {
-      main: blue[300]
+      main: indigo[500]
     },
   }
 })

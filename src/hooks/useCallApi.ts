@@ -4,8 +4,11 @@ import axios from "axios";
 type configType = {
   url: string,
   method: "get" | "post" | "put" | "delete",
-  body: object
+  body: object | null
 }
+
+export const BASE_URL = "http://46.100.46.149:8069";
+export const baseApi = axios;
 
 export default function useCallApi(config: configType, runner: boolean)
 {
@@ -14,8 +17,7 @@ export default function useCallApi(config: configType, runner: boolean)
   // axios configs 
   const memoBaseApi = useMemo(() =>
   {
-    const baseApi = axios;
-    baseApi.defaults.baseURL = "";
+    baseApi.defaults.baseURL = BASE_URL;
     baseApi.defaults.headers.common["Content-Type"] = "application/json";
     baseApi.defaults.headers.common.Accept = "application/json";
 
@@ -35,10 +37,12 @@ export default function useCallApi(config: configType, runner: boolean)
   {
     try
     {
-      setLoader(false);
+      setLoader(true);
       const callApi = await memoBaseApi[method](url);
-
-
+      if(callApi.status < 400)
+      {
+        setData(callApi.data);
+      }
     } catch (error) {
 
     } finally {
