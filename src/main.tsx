@@ -13,6 +13,11 @@ import router from './routes/index.tsx';
 import GlobalStylesComoponet from "./stylesheet/globalStyles.tsx"
 import theme from './stylesheet/customTheme.tsx';
 
+import { fetchTasksList } from './reducers/thunks/task.ts';
+
+// fetch task only for once
+store.dispatch(fetchTasksList());
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
     <Provider store={store}>
@@ -22,5 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <GlobalStylesComoponet />
       </ThemeProvider> 
     </Provider>
-  </React.Fragment>,
+  </React.Fragment>
 )
+  

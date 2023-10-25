@@ -1,12 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-export const getAllTasks = createAsyncThunk(
-  'product/fetchData', 
-  async (service, { getState }) =>
-  {
-    return {}
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchTasksList } from "./thunks/task";
 
 type initialStateType = {
   data: []
@@ -29,7 +22,15 @@ const taskSlice = createSlice({
     addToTask: (state, action) => {},
     editTask: (state, action) => {},
     deleteTask: (state, action) => {}
-  }
+  },
+
+  extraReducers(builder) {
+    builder
+      .addCase(fetchTasksList.fulfilled, (state, action) =>
+      {
+        console.log(action);
+      })
+  },
 })
 
 export const {
