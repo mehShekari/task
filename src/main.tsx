@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <RouterProvider router={router}  />
+        <RouterProvider router={router} />
         <GlobalStylesComoponet />
       </ThemeProvider> 
     </Provider>
